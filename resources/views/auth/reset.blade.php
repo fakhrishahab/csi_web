@@ -1,12 +1,14 @@
 @extends('layouts.auth')
 
-@section('title', 'Login')
+@section('title', 'Reset Password')
 
-@section('heading', 'Welcome, please Login')
+@section('heading', 'Please enter your new password')
 
 @section('content')
 	{!! Form::open() !!}
 		
+		{!! Form::hidden('token', $token) !!}
+
 		<div class="form-group">
 			{!! Form::label('email') !!}
 			{!! Form::text('email', null, ['class' => 'form-control' ]) !!}
@@ -17,9 +19,13 @@
 			{!! Form::password('password', ['class' => 'form-control' ]) !!}
 		</div>
 
-		{!! Form::submit('Login', ['class' => 'btn btn-primary']) !!}
+		<div class="form-group">
+			{!! Form::label('password_confirmation') !!}
+			{!! Form::password('password_confirmation', ['class' => 'form-control' ]) !!}
+		</div>
 
-		<a href="{{ route('auth.password.email') }}" class="small">Forgot password?</a>
+		{!! Form::submit('Reset Password', ['class' => 'btn btn-primary']) !!}
+
 
 	{!! Form::close() !!}
 @endsection

@@ -11,12 +11,13 @@ var elixir = require('laravel-elixir');
  |
  */
 elixir.config.assetsPath = 'public/themes/default/assets';
-elixir.config.publicPaht = elixir.config.assetsPath;
+elixir.config.publicPath = elixir.config.assetsPath;
 
 elixir.config.css.sass.pluginOptions.includePaths = [
 	'node_modules/bootstrap-sass/assets/stylesheets'
 ];
 
 elixir(function(mix) {
+	mix.copy('node_modules/bootstrap-sass/assets/fonts', elixir.config.publicPath+'/fonts');
     mix.sass('backend.scss');
 });

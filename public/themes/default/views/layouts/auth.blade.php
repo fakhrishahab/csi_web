@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>@yield('title') &mdash; CSI Group</title>
-	<link rel="stylesheet" type="text/css" href="http://localhost/csi/public/css/backend.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost/csi/public/themes/default/assets/css/backend.css">
 </head>
 <body>
 	<div class="container">
@@ -19,13 +19,20 @@
 						@if($errors->any())
 							<div class="alert alert-danger">
 								<strong>We found some errors!</strong>
+								<ul>
+									@foreach($errors->all() as $error)
+										<li>{{ $error }}</li>
+									@endforeach
+								</ul>
 							</div>
+						@endif
 
-							<ul>
-								@foreach($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
+						@if($status)
+
+						<div class="alert alert-info">
+							{{ $status }}
+						</div>
+
 						@endif
 
 						@yield('content')
