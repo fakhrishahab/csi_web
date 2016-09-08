@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "illuminate/html": "^5.0",
-        "lewis/presenter": "^1.0"
+        "lewis/presenter": "^1.0",
+        "baum/baum": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -23,7 +24,10 @@
         ],
         "psr-4": {
             "csi\\": "app/"
-        }
+        },
+        "files" : [
+            "app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "classmap": [

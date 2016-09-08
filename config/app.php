@@ -123,6 +123,7 @@ return [
 
     'providers' => [
 
+        Baum\Providers\BaumServiceProvider::class,
         Lewis\Presenter\PresenterServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
 

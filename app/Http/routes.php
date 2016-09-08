@@ -14,7 +14,10 @@ Route::get('backend/users/{users}/confirm', ['as' => 'backend.users.confirm', 'u
 Route::resource('backend/users', 'Backend\UsersController', ['except' => ['show']]);
 
 Route::get('backend/pages/{pages}/confirm', ['as' => 'backend.pages.confirm', 'uses' => 'Backend\PagesController@confirm']);
-Route::resource('backend/pages', 'Backend\PagesController');
+Route::resource('backend/pages', 'Backend\PagesController', ['except' => ['show']]);
+
+Route::get('backend/blog/{blog}/confirm', ['as' => 'backend.blog.confirm', 'uses' => 'Backend\BlogController@confirm']);
+Route::resource('backend/blog', 'Backend\BlogController');
 
 Route::get('backend/dashboard', ['as' => 'backend.dashboard', 'uses' => 'Backend\DashboardController@index']);
 

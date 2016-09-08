@@ -4,7 +4,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>@yield('title') &mdash; CSI Group</title>
-	<link rel="stylesheet" type="text/css" href="http://localhost/csi/public/themes/default/assets/css/backend.css">
+	<link rel="stylesheet" type="text/css" href="{{ theme('css/backend.css') }}">
+
+	<script src="{{ theme('js/simplemde.js') }}"></script>
 </head>
 <body>
 	<nav class="navbar navbar-static-top navbar-inverse">
@@ -13,6 +15,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="{{ route('backend.users.index') }}">Users</a></li>
 				<li><a href="{{ route('backend.pages.index') }}">Pages</a></li>
+				<li><a href="{{ route('backend.blog.index') }}">Blog Post</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><span class="navbar-text">Hello, {{$admin->name}}</span></li>

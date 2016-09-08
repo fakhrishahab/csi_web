@@ -7,6 +7,12 @@ return [
 		'folder' => 'themes',
 		'active' => 'default'
 
+	],
+
+	'templates' => [
+
+		'page' => csi\Templates\PageTemplate::class
+
 	]
 
 ];

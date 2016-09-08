@@ -14,6 +14,7 @@
 				<th>Title</th>
 				<th>URI</th>
 				<th>Name</th>
+				<th>Template</th>
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
@@ -32,10 +33,11 @@
 
 					<tr>
 						<td>
-							<a href="{{ route('backend.pages.edit', $page->id) }}">{{ $page->title }}</a>
+							{!! $page->linkToPaddedTittle(route('backend.pages.edit', $page->id)) !!}
 						</td>
 						<td><a href="{{ url($page->uri) }}">{{ $page->pretty_uri }}</a></td>
 						<td>{{ $page->name or 'None'}} </td>
+						<td>{{ $page->template or 'None'}} </td>
 						<td>
 							<a href="{{ route('backend.pages.edit', $page->id) }}">
 								<span class="glyphicon glyphicon-edit"></span>

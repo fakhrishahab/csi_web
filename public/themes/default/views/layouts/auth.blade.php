@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>@yield('title') &mdash; CSI Group</title>
-	<link rel="stylesheet" type="text/css" href="http://localhost/csi/public/themes/default/assets/css/backend.css">
+	<link rel="stylesheet" type="text/css" href="{{ theme('css/backend.css') }}">
 </head>
 <body>
 	<div class="container">
