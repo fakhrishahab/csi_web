@@ -23,6 +23,18 @@ class BlogController extends Controller
     	return view('backend.blog.index', compact('posts'));
     }
 
+    public function create(Post $post)
+    {
+        return view('backend.blog.form', compact('post'));
+    }
+
+    public function store(Requests\StorePostRequest $request)
+    {
+
+    }
+
+
+
     public function confirm($id)
     {
 

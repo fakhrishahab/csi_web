@@ -6,7 +6,7 @@
 	<title>@yield('title') &mdash; CSI Group</title>
 	<link rel="stylesheet" type="text/css" href="{{ theme('css/backend.css') }}">
 
-	<script src="{{ theme('js/simplemde.js') }}"></script>
+	<script src="{{ theme('js/all.js') }}"></script>
 </head>
 <body>
 	<nav class="navbar navbar-static-top navbar-inverse">
