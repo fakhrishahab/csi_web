@@ -38,7 +38,7 @@
 		{!! Form::textarea('body',null, ['class' => 'form-control']) !!}
 	</div>
 	
-	{!! Form::submit($post->exists ? 'Save Blog Post' : 'Create New Blog Post', ['class' => 'btn-primary']) !!}
+	{!! Form::submit($post->exists ? 'Save Blog Post' : 'Create New Blog Post', ['class' => 'btn btn-primary']) !!}
 
 	{!! Form::close() !!}
 
