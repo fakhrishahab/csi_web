@@ -15,6 +15,8 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    protected $dates = ['last_login_at'];
+
     /**
      * The attributes that should be hidden for arrays.
      *

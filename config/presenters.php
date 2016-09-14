@@ -16,4 +16,5 @@ return [
 
     csi\Page::class => csi\Presenters\PagePresenter::class,
     csi\Post::class => csi\Presenters\PostPresenter::class,
+    csi\User::class => csi\Presenters\UserPresenter::class,
 ];

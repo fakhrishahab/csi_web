@@ -126,6 +126,7 @@ return [
         Baum\Providers\BaumServiceProvider::class,
         Lewis\Presenter\PresenterServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
+        GrahamCampbell\Markdown\MarkdownServiceProvider::class,
 
         /*
          * Laravel Framework Service Providers...
@@ -207,6 +208,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Form' => Illuminate\Html\FormFacade::class,
+        'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
 
     ],
 

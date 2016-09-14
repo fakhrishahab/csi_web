@@ -3,9 +3,21 @@
 namespace csi\Presenters;
 
 use Lewis\Presenter\AbstractPresenter;
+use Illuminate\Support\Facades\App;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class PostPresenter extends AbstractPresenter
 {
+	public function excerptHtml()
+	{
+		return $this->excerpt ? Markdown::convertToHtml($this->excerpt) : null;
+	}
+
+	public function bodyHtml()
+	{
+		return $this->body ? $this->markdown->convertToHtml($this->body) : null;
+	}
+
 	public function publishedDate()
 	{
 		if($this->published_at){
