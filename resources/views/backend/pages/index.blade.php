@@ -31,7 +31,7 @@
 
 				@foreach($pages as $page)
 
-					<tr>
+					<tr class="{{ $page->hidden ? 'warning' : '' }}">
 						<td>
 							{!! $page->linkToPaddedTittle(route('backend.pages.edit', $page->id)) !!}
 						</td>

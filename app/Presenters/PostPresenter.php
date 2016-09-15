@@ -15,7 +15,7 @@ class PostPresenter extends AbstractPresenter
 
 	public function bodyHtml()
 	{
-		return $this->body ? $this->markdown->convertToHtml($this->body) : null;
+		return $this->body ? Markdown::convertToHtml($this->body) : null;
 	}
 
 	public function publishedDate()

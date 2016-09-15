@@ -2,10 +2,17 @@
 
 namespace csi\Presenters;
 
+use Illuminate\Support\Facades\App;
+use GrahamCampbell\Markdown\Facades\Markdown;
 use Lewis\Presenter\AbstractPresenter;
 
 class PagePresenter extends AbstractPresenter
 {
+	public function contentHtml()
+	{
+		return Markdown::convertToHtml($this->content);
+	}
+
 	public function uriWildcard()
 	{
 		return $this->uri.'*';

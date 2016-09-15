@@ -26,8 +26,9 @@ class UpdatePageRequest extends Request
         return [
             'title' => ['required'],
             'uri' => ['required', 'unique:pages,uri,'.$this->route('pages')],
-            'name' => ['unique:pages,name'.$this->route('pages')],
-            'content' => ['required']
+            'name' => ['unique:pages,name,'.$this->route('pages')],
+            'content' => ['required'],
+            'image' => ['image', 'mimes:jpg,jpeg,png']
         ];
     }
 }

@@ -11,7 +11,9 @@ return [
 
 	'templates' => [
 
-		'page' => csi\Templates\PageTemplate::class
+		'home' => csi\Templates\HomeTemplate::class,
+		'blog' => csi\Templates\BlogTemplate::class,
+		'blog.post' => csi\Templates\BlogPostTemplate::class,
 
 	]
 

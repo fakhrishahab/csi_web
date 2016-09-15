@@ -7,6 +7,7 @@
 	{!! 
 		Form::model($page, [
 			'method' => $page->exists ? 'put' : 'post',
+			'files' => true,
 			'route' => $page->exists ? ['backend.pages.update', $page->id] : ['backend.pages.store', $page->id] 
 		])
 	!!}
@@ -61,6 +62,23 @@
 	<div class="form-group">
 		{!! Form::label('content') !!}
 		{!! Form::textarea('content', null, ['class' => 'form-control']) !!}
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('image', 'Featured Image') !!}
+		{!! Form::file('image', null, ['class'=>'form-control']) !!}
+	</div>
+
+	<div class="checkbox">
+		<label for="">
+			{!! Form::checkbox('hidden') !!}
+
+			Hide page from navigation
+
+			<span class="help-block">
+				Checking this will hide the page from the navigation. Can only be applied to pages without children.
+			</span>
+		</label>
 	</div>
 
 	{!! Form::submit($page->exists ? 'Save Page' : 'Create New Page', ['class' => 'btn btn-primary']) !!}

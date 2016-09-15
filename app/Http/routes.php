@@ -20,7 +20,3 @@ Route::get('backend/blog/{blog}/confirm', ['as' => 'backend.blog.confirm', 'uses
 Route::resource('backend/blog', 'Backend\BlogController');
 
 Route::get('backend/dashboard', ['as' => 'backend.dashboard', 'uses' => 'Backend\DashboardController@index']);
-
-Route::get('/', function () {
-    return view('welcome');
-});

@@ -5,6 +5,7 @@
 @section('content')
 
 	{!! Form::model($post, [
+		'files' => 'true',
 		'method' => $post->exists ? 'put' : 'post',
 		'route' => $post->exists ? ['backend.blog.update', $post->id] : ['backend.blog.store'] 
 	]) !!}

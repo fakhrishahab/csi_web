@@ -12,9 +12,11 @@ class PagesController extends Controller
 {
     protected $pages;
 
-    public function __construct(Page $pages)
+    public function __construct(Page $pages, Request $req)
     {
     	$this->pages = $pages;
+        $this->req = $req;
+        $this->path = 'public/images/featured/';
 
     	parent::__construct();
     }
@@ -29,14 +31,29 @@ class PagesController extends Controller
     public function create(Page $page)
     {
         $templates = $this->getPageTemplates();
-        $orderPages = $this->pages->all();
+        $orderPages = $this->pages->where('hidden', false)->orderBy('lft', 'asc')->get();
 
         return view('backend.pages.form', compact('page', 'templates', 'orderPages'));
     }
 
     public function store(Requests\StorePageRequest $request)
     {
-        $page = $this->pages->create($request->only('title', 'uri', 'name', 'content', 'template'));
+
+        $filename = $request->file('image')->getClientOriginalName();
+        $file = $request->only('uri')['uri'] . '_.'. $request->file('image')->getClientOriginalExtension();
+        $path = 'public/images/featured/';
+        $request->file('image')->move($path, $filename);
+
+        // $page = $this->pages->create($request->only('title', 'uri', 'name', 'content', 'template', 'hidden'));
+        $page = $this->pages->create([
+            'title' => $request->only('title')['title'],
+            'uri' => $request->only('uri')['uri'],
+            'name' => $request->only('name')['name'],
+            'content' => $request->only('content')['content'],
+            'template' => $request->only('template')['template'],
+            'hidden' => $request->only('hidden')['hidden'],
+            'image' => $this->path .''. $filename
+            ]);
 
         $this->updatePageOrder($page, $request);
 
@@ -67,7 +84,7 @@ class PagesController extends Controller
     {
         $templates = $this->getPageTemplates();
         $page = $this->pages->findOrFail($id);
-        $orderPages = $this->pages->all();
+        $orderPages = $this->pages->where('hidden', false)->orderBy('lft', 'asc')->get();
 
         return view('backend.pages.form', compact('page', 'templates', 'orderPages'));
     }
@@ -80,7 +97,27 @@ class PagesController extends Controller
             return $response;
         }
 
-        $page->fill($request->only('title', 'uri','name', 'content', 'template'))->save();
+        $filename = $request->file('image')->getClientOriginalName();
+        $file = $request->only('uri')['uri'] . '_.'. $request->file('image')->getClientOriginalExtension();
+        $path = 'public/images/featured/';
+        $request->file('image')->move($path, $filename);
+
+        $attr = [
+            'title' => $request->only('title')['title'],
+            'uri' => $request->only('uri')['uri'],
+            'name' => $request->only('name')['name'],
+            'content' => $request->only('content')['content'],
+            'template' => $request->only('template')['template'],
+            'hidden' => $request->only('hidden')['hidden'],
+        ];
+
+        if($request->hasFile('image')){
+            $attr['image'] = $this->path.''.$filename;
+            // array_push($attr, 'image' => $this->path.''.$filename);
+        }
+
+        // $page->fill($request->only('title', 'uri','name', 'content', 'template', 'hidden'))->save();
+        $page->fill($attr)->save();
 
         return redirect(route('backend.pages.edit', $page->id))->with('status', 'Page has been updated');
     }
