@@ -42,6 +42,11 @@
 							<a href="{{ route('backend.pages.edit', $page->id) }}">
 								<span class="glyphicon glyphicon-edit"></span>
 							</a>
+							@if($page->type)
+							<a href="{{ route('backend.content_home.list', $page->id) }}">
+								<span class="glyphicon glyphicon-th-list"></span>
+							</a>
+							@endif
 						</td>
 						<td>
 							<a href="{{ route('backend.pages.confirm', $page->id) }}">

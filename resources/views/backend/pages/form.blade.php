@@ -31,6 +31,18 @@
 		</p>
 	</div>
 
+	<div class="checkbox">
+		<label for="">
+			{!! Form::checkbox('type') !!}
+
+			Show on self page
+
+			<span class="help-block">
+				Checking this will notice this page will be shown on the home page.
+			</span>
+		</label>
+	</div>
+
 	<div class="form-group row">
 		<div class="col-md-12">
 			{!! Form::label('template') !!}

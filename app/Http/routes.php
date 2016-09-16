@@ -19,4 +19,7 @@ Route::resource('backend/pages', 'Backend\PagesController', ['except' => ['show'
 Route::get('backend/blog/{blog}/confirm', ['as' => 'backend.blog.confirm', 'uses' => 'Backend\BlogController@confirm']);
 Route::resource('backend/blog', 'Backend\BlogController');
 
+Route::get('backend/content_home/{pages}/list', ['as' => 'backend.content_home.list', 'uses' => 'Backend\ContentHomeController@list']);
+Route::resource('backend/content_home', 'Backend\ContentHomeController');
+
 Route::get('backend/dashboard', ['as' => 'backend.dashboard', 'uses' => 'Backend\DashboardController@index']);

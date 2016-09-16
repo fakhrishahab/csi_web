@@ -39,20 +39,25 @@ class PagesController extends Controller
     public function store(Requests\StorePageRequest $request)
     {
 
-        $filename = $request->file('image')->getClientOriginalName();
-        $file = $request->only('uri')['uri'] . '_.'. $request->file('image')->getClientOriginalExtension();
-        $path = 'public/images/featured/';
-        $request->file('image')->move($path, $filename);
+        if($request->hasFile('image')){
+            $filename = $request->file('image')->getClientOriginalName();
+            $file = $request->only('uri')['uri'] . '_.'. $request->file('image')->getClientOriginalExtension();
+            $path = 'public/images/featured/';
+            $request->file('image')->move($path, $filename);
+        }
+        
 
         // $page = $this->pages->create($request->only('title', 'uri', 'name', 'content', 'template', 'hidden'));
+        // echo $request->only('hidden')['hidden'] ? 'ada' : 'ga ada';
         $page = $this->pages->create([
             'title' => $request->only('title')['title'],
             'uri' => $request->only('uri')['uri'],
             'name' => $request->only('name')['name'],
             'content' => $request->only('content')['content'],
             'template' => $request->only('template')['template'],
-            'hidden' => $request->only('hidden')['hidden'],
-            'image' => $this->path .''. $filename
+            'hidden' => $request->only('hidden')['hidden'] ? $request->only('hidden')['hidden'] : 0,
+            'image' => $request->hasFile('image') ? $this->path .''. $filename : '',
+            'type' => $request->only('type')['type'] ? $request->only('type')['type'] : 0
             ]);
 
         $this->updatePageOrder($page, $request);
@@ -97,11 +102,6 @@ class PagesController extends Controller
             return $response;
         }
 
-        $filename = $request->file('image')->getClientOriginalName();
-        $file = $request->only('uri')['uri'] . '_.'. $request->file('image')->getClientOriginalExtension();
-        $path = 'public/images/featured/';
-        $request->file('image')->move($path, $filename);
-
         $attr = [
             'title' => $request->only('title')['title'],
             'uri' => $request->only('uri')['uri'],
@@ -109,9 +109,15 @@ class PagesController extends Controller
             'content' => $request->only('content')['content'],
             'template' => $request->only('template')['template'],
             'hidden' => $request->only('hidden')['hidden'],
+            'type' => $request->only('type')['type'] ? $request->only('type')['type'] : 0
         ];
 
         if($request->hasFile('image')){
+            $filename = $request->file('image')->getClientOriginalName();
+            $file = $request->only('uri')['uri'] . '_.'. $request->file('image')->getClientOriginalExtension();
+            $path = 'public/images/featured/';
+            $request->file('image')->move($path, $filename);
+
             $attr['image'] = $this->path.''.$filename;
             // array_push($attr, 'image' => $this->path.''.$filename);
         }
@@ -141,4 +147,6 @@ class PagesController extends Controller
             }
         }
     }
+
+    
 }

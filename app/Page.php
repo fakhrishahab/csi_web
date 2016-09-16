@@ -6,7 +6,7 @@ use Baum\Node;
 
 class Page extends Node
 {
-    protected $fillable = ['title', 'name', 'uri', 'content', 'image', 'template', 'hidden'];
+    protected $fillable = ['title', 'name', 'uri', 'content', 'image', 'template', 'hidden', 'type'];
 
     public function updateOrder($order, $orderPage)
     {
