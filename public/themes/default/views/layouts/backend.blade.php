@@ -5,8 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>@yield('title') &mdash; CSI Group</title>
 	<link rel="stylesheet" type="text/css" href="{{ theme('css/backend.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ theme('css/summernote.css') }}">
 
-	<script src="{{ theme('js/all.js') }}"></script>
+	<script src="{{ theme('js/admin-app.js') }}"></script>
 </head>
 <body>
 	<nav class="navbar navbar-static-top navbar-inverse">

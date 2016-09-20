@@ -43,7 +43,7 @@
 								<span class="glyphicon glyphicon-edit"></span>
 							</a>
 							@if($page->type)
-							<a href="{{ route('backend.content_home.list', $page->id) }}">
+							<a href="{{ route('backend.content_home.show', $page->id) }}">
 								<span class="glyphicon glyphicon-th-list"></span>
 							</a>
 							@endif

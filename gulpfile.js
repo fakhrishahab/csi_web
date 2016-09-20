@@ -21,6 +21,7 @@ elixir.config.css.sass.pluginOptions.includePaths = [
 elixir(function(mix) {
 	mix.copy('node_modules/bootstrap-sass/assets/fonts', elixir.config.publicPath+'/fonts');
 	mix.copy('node_modules/font-awesome/fonts', elixir.config.publicPath+'/fonts');
+	mix.copy('node_modules/summernote/dist/font', elixir.config.publicPath+'/fonts');
 
 	mix.copy('node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js', elixir.config.publicPath+'/js/bootstrap.js');
 	mix.copy('node_modules/jquery/dist/jquery.min.js', elixir.config.publicPath+'/js/jquery.js');
@@ -30,12 +31,15 @@ elixir(function(mix) {
 	mix.copy('node_modules/eonasdan-bootstrap-datetimepicker/src/sass/_bootstrap-datetimepicker.scss', elixir.config.publicPath+'/sass/datepicker.scss');
 
 	mix.scripts([
-		'jquery.js', 'bootstrap.js', 'moment.js',
-		'simplemde.js', 'datepicker.js'
-	])
+		'jquery.js', 'bootstrap.js', 'moment.js', 'summernote.js', 'datepicker.js'
+	], 'public/themes/default/assets/js/admin-app.js')
 
 	mix.copy('node_modules/simplemde/dist/simplemde.min.css', elixir.config.publicPath+'/css/simplemde.css');
 	mix.copy('node_modules/simplemde/dist/simplemde.min.js', elixir.config.publicPath+'/js/simplemde.js');
+
+	mix.copy('resources/assets/css/summernote.css', elixir.config.publicPath+'/css/summernote.css');
+	mix.copy('node_modules/summernote/dist/summernote.min.js', elixir.config.publicPath+'/js/summernote.js');
+
     mix.sass('backend.scss');
     mix.sass('frontend.scss');
 });

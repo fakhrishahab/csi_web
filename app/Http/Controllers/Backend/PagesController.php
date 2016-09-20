@@ -96,6 +96,8 @@ class PagesController extends Controller
 
     public function update(Requests\UpdatePageRequest $request, $id)
     {
+        // print_r($request->only('content'));
+        // break;
         $page = $this->pages->findOrFail($id);
 
         if($response = $this->updatePageOrder($page, $request)){

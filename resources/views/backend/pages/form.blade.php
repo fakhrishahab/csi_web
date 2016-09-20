@@ -72,8 +72,12 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('content') !!}
-		{!! Form::textarea('content', null, ['class' => 'form-control']) !!}
+		{!! Form::label('content', 'Body') !!}
+		{!! Form::textarea('content', null, ['class'=>'form-control', 'id' => 'content']) !!}
+
+		<!-- <div id="content">
+			
+		</div> -->
 	</div>
 
 	<div class="form-group">
@@ -98,7 +102,23 @@
 	{!! Form::close() !!}
 
 	<script>
-		new SimpleMDE().render();
+		// new SimpleMDE().render();
+		$(document).ready(() => {
+			var content = $('#content');
+
+			content.summernote({
+				height : 300,
+				toolbar: [
+			        ['style', ['bold', 'italic', 'underline', 'clear']],
+			        ['font', ['strikethrough', 'superscript', 'subscript']],
+			        ['fontsize', ['fontsize']],
+			        ['color', ['color']],
+			        ['para', ['ul', 'ol', 'paragraph']],
+			        ['height', ['height']]
+			    ]
+			});
+			// content.summernote('content', content.text());
+		})
 	</script>
 
 @endsection

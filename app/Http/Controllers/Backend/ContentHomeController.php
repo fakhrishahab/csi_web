@@ -16,7 +16,7 @@ class ContentHomeController extends Controller
     	$this->content = $content;
     }
 
-    public function list($id)
+    public function show($id)
     {
     	$content = $this->content->all();
 
