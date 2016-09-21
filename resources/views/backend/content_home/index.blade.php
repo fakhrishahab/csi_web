@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<a href="#" class="btn btn-primary">
+	<a href="{{ route('backend.content_home.create') }}" class="btn btn-primary">
 		Create New Content
 	</a>
 
@@ -21,12 +21,12 @@
 				<tr>
 					<td>{{ $data->headline }}</td>
 					<td>
-						<a href="">
+						<a href="{{ route('backend.content_home.edit', $data->id) }}">
 							<span class="glyphicon glyphicon-edit"></span>
 						</a>
 					</td>
 					<td>
-						<a href="">
+						<a href="{{ route('backend.content_home.confirm', $data->id) }}">
 							<span class="glyphicon glyphicon-remove"></span>
 						</a>
 					</td>
