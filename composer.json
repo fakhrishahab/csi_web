@@ -10,7 +10,8 @@
         "illuminate/html": "^5.0",
         "lewis/presenter": "^1.0",
         "baum/baum": "^1.1",
-        "graham-campbell/markdown": "^6.0"
+        "graham-campbell/markdown": "^6.0",
+        "doctrine/dbal" : "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -3,11 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="csrf-token" content="{{ csrf_token() }}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>@yield('title') &mdash; CSI Group</title>
 	<link rel="stylesheet" type="text/css" href="{{ theme('css/backend.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ theme('css/summernote.css') }}">
-
+	
 	<script src="{{ theme('js/admin-app.js') }}"></script>
+
 </head>
 <body>
 	<nav class="navbar navbar-static-top navbar-inverse">
@@ -17,7 +20,9 @@
 				<li><a href="{{ route('backend.dashboard') }}">Dashboard</a></li>
 				<li><a href="{{ route('backend.users.index') }}">Users</a></li>
 				<li><a href="{{ route('backend.pages.index') }}">Pages</a></li>
-				<li><a href="{{ route('backend.blog.index') }}">Blog Post</a></li>
+				<li><a href="{{ route('backend.content.index') }}">Content</a></li>
+
+				<!-- <li><a href="{{ route('backend.blog.index') }}">Blog Post</a></li> -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><span class="navbar-text">Hello, {{$admin->name}}</span></li>

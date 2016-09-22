@@ -22,4 +22,13 @@ Route::resource('backend/blog', 'Backend\BlogController');
 Route::get('backend/content_home/{pages}/confirm', ['as' => 'backend.content_home.confirm', 'uses' => 'Backend\ContentHomeController@confirm']);
 Route::resource('backend/content_home', 'Backend\ContentHomeController');
 
+Route::post('backend/content/upload', 'Backend\ContentController@upload');
+Route::get('backend/content/{pages}/confirm', ['as' => 'backend.content.confirm', 'uses' => 'Backend\ContentController@confirm']);
+Route::resource('backend/content', 'Backend\ContentController', ['except' => ['show']]);
+
 Route::get('backend/dashboard', ['as' => 'backend.dashboard', 'uses' => 'Backend\DashboardController@index']);
+
+Route::group(['prefix'=>'gallery'], function(){
+	Route::post('upload', 'Backend\ContentController@upload');
+	Route::get('', 'Backend\ContentController@gallery');
+});

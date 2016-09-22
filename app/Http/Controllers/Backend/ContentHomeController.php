@@ -32,7 +32,7 @@ class ContentHomeController extends Controller
         return view('backend.content_home.form', compact('content'));
     }
 
-    public function store(Requests\StoreContentHomeRequest $requests)
+    public function store(Requests\StoreContentHomeRequest $request)
     {
         echo $this->id;
         // $attr = [

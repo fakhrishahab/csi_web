@@ -4,7 +4,7 @@ namespace csi\Http\Requests;
 
 use csi\Http\Requests\Request;
 
-class StoreContentHomeRequest extends Request
+class UpdateContentRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,7 @@ class StoreContentHomeRequest extends Request
     public function rules()
     {
         return [
+            'title' => ['required'],
             'headline' => ['required'],
             'description' => ['required'],
             'image' => ['image', 'mimes:jpg,jpeg,png', 'max:5000']

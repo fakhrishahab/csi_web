@@ -1,7 +1,10 @@
 @foreach($posts as $post)
 
 	<article>
-		<h2> <a href="{{ route('blog.post', [$post->id, $post->slug]) }}">{{ $post->title }}</a></h2>
+		<!-- FOR ARTICLE TEMPLATE -->
+		<!-- {{ route('blog.post', [$post->id, $post->slug]) }} -->
+		<!-- AND ADD /article/{id}/{slug} on database page -->
+		<h2> <a href="#">{{ $post->title }}</a></h2>
 		<p>
 			Posted by {{ $post->author->name }} on {{ $post->published_date }}
 		</p>
