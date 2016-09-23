@@ -130,11 +130,16 @@ class ContentController extends Controller
 
     public function gallery(Request $request)
     {
-        return $this->gallery
+        $result = $this->gallery
                 ->offset($request->input('offset'))
                 ->limit($request->input('limit'))
                 ->orderBy('created_at', 'desc')
                 ->get();
+        $count = $this->gallery->count();
+        return array(
+                'total' => $count,
+                'result' => $result
+            );
 
 
         // return $request->input('limit');

@@ -65,7 +65,7 @@
 							</li>
 						</ul>
 
-						<div class="tab-content">
+						<div class="tab-content tab-content-gallery">
 							<div role="tabpanel" class="tab-pane active" id="select">
 								<div class="row">
 									<div class="col-md-9">
@@ -89,18 +89,28 @@
 								
 							</div>
 							<div role="tabpanel" class="tab-pane" id="upload">
-								<div class="col-md-9">
-									<div class="row" id="gallery-wrapper">
-									
-									</div>	
+								<div class="row">
+									<nav aria-label="Page Navigation" class="pagination-wrapper">
+										<ul class="pagination">
+											
+										</ul>
+									</nav>
 								</div>
-								<div class="col-md-3">
-									<img src="" class="img-responsive" id="img-preview">
-									<div class="form-group">
-										{!! Form::label('image-path', 'Image Path') !!}
-										{!! Form::text('img-link', null, ['class'=>'form-control', 'id' => 'img-link']) !!}	
+								<div class="row">
+									<div class="col-md-9 gallery-container">
+										<div class="row" id="gallery-wrapper">
+										
+										</div>	
+									</div>
+									<div class="col-md-3">
+										<img src="" class="img-responsive" id="img-preview">
+										<div class="form-group">
+											{!! Form::label('image-path', 'Image Path') !!}
+											{!! Form::text('img-link', null, ['class'=>'form-control', 'id' => 'img-link']) !!}	
+										</div>
 									</div>
 								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -138,7 +148,7 @@
 	$(document).ready(() => {
 		var headline = $('#headline');
 		var description = $('#description');
-		var offset = 0, limit = 20;
+		var offset = 0, limit = 2;
 
 		var option = {
 			height : 300,
@@ -164,7 +174,8 @@
 			'btnUpload' : $('#btn-new-upload'),
 			'galleryWrapper' : $('#gallery-wrapper'),
 			'imgPreview' : $('#img-preview'),
-			'imgLink' : $('#img-link')
+			'imgLink' : $('#img-link'),
+			'imgPage' : $('.pagination')
 		};
 
 		elm.newImage.on('change', function(event){
@@ -194,19 +205,21 @@
 			}
 		})
 		console.log(window.location)
-		getGallery();
-		function getGallery(){
-			elm.galleryWrapper.empty();
+		getGallery(offset);
+		function getGallery(offset){
+			// if(offset == 0){
+			// }
 
 			$.ajax({
 				type : 'get',
 				url : 'http://localhost/csi/gallery?offset='+offset+'&limit='+limit,
 				success : function(resp){
-					resp.map(function(key){
+				elm.galleryWrapper.empty();
+					resp.result.map(function(key){
 						elm.galleryWrapper.append(`
-							<div class="col-md-3 image-data" data-path=`+key.path+` style="height : 100px; text-align: center; padding : 10px; box-sizing : border-box">
-								<div style="border: 1px solid #CCC; height : 100px">
-									<img src=`+ "../../" +key.path +` class="img-responsive" style="height :100%!important; display:inline-block!important"/>
+							<div class="col-md-3 image-data" data-path=`+key.path+`>
+								<div>
+									<img src=`+ "../../../" +key.path +` class="img-responsive"/>
 								</div>
 							</div>
 						`);
@@ -214,9 +227,26 @@
 
 					$('.image-data').on('click', function(){
 						console.log($(this).data('path'));
-						elm.imgPreview.attr('src', "../../"+$(this).data('path'));
+						elm.imgPreview.attr('src', "../../../"+$(this).data('path'));
 						elm.imgLink.val(window.location.origin+'/'+$(this).data('path'))
 					})
+
+					if(elm.imgPage.children('li').length <= 0){
+						for(var ii = 0; ii < Math.ceil(resp.total / limit); ii++){
+							elm.imgPage.append(`
+								<li class="pagination-link" data-page=`+ ii +`><a href="#"> `+ parseInt(ii+1) +`</a></li>
+							`);
+						}
+
+						$('.pagination-link').on('click', function(){
+							var page = $(this).data('page');
+							var offset = page * limit;
+							console.log(offset)
+							// elm.galleryWrapper.empty();
+							getGallery(offset);
+						})
+					}
+					
 				},
 				error : function(err){
 					console.log('error ', err);
