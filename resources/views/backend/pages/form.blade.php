@@ -83,6 +83,8 @@
 	<div class="form-group">
 		{!! Form::label('image', 'Featured Image') !!}
 		{!! Form::file('image', null, ['class'=>'form-control']) !!}
+
+		<div class="image-preview" style="background-image:url('{!! $app['config']['app.url'] !!}/{!! $page->image !!}')"></div>
 	</div>
 
 	<div class="checkbox">
@@ -106,6 +108,10 @@
 		$(document).ready(() => {
 			var content = $('#content');
 
+			var elm = {
+				imageFeatured : $('input[name=image]')
+			}
+
 			content.summernote({
 				height : 300,
 				toolbar: [
@@ -118,6 +124,22 @@
 			    ]
 			});
 			// content.summernote('content', content.text());
+
+			elm.imageFeatured.on('change', function(evt){
+				previewImage($(this), evt);
+			})
+
+			function previewImage(element, evt){
+				if (evt.target.files && evt.target.files[0]) {
+			        var reader = new FileReader();
+
+			        reader.onload = function (e) {
+			        	element.siblings('.image-preview').css('background-image', 'url('+e.target.result+')');
+			        }
+
+			        reader.readAsDataURL(evt.target.files[0]);
+			    }
+			}
 		})
 	</script>
 

@@ -136,6 +136,15 @@
 	<div class="form-group">
 		{!! Form::label('image', 'Featured Image') !!}
 		{!! Form::file('image', null, ['class'=>'form-control']) !!}
+
+		<div class="image-preview" style="background-image:url('{!! $app['config']['app.url'] !!}/{!! $content->image !!}')"></div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('background-image', 'Background Image') !!}
+		{!! Form::file('background', null, ['class'=>'form-control']) !!}
+
+		<div class="image-preview" style="background-image:url('{!! $app['config']['app.url'] !!}/{!! $content->background !!}')"></div>
 	</div>
 
 	{!! Form::submit($content->exists ? 'Save Content' : 'Create New Content Home', ['class' => 'btn btn-primary']) !!}
@@ -175,7 +184,10 @@
 			'galleryWrapper' : $('#gallery-wrapper'),
 			'imgPreview' : $('#img-preview'),
 			'imgLink' : $('#img-link'),
-			'imgPage' : $('.pagination')
+			'imgPage' : $('.pagination'),
+
+			'imageFeatured' : $('input[name=image]'),
+			'imageBackground' : $('input[name=background]')
 		};
 
 		elm.newImage.on('change', function(event){
@@ -204,7 +216,7 @@
 				})
 			}
 		})
-		console.log(window.location)
+		// console.log(window.location)
 		getGallery(offset);
 		function getGallery(offset){
 			// if(offset == 0){
@@ -252,6 +264,26 @@
 					console.log('error ', err);
 				}
 			})
+		}
+
+		elm.imageFeatured.on('change', function(evt){
+			previewImage($(this), evt);
+		})
+
+		elm.imageBackground.on('change', function(evt){
+			previewImage($(this), evt);
+		})
+
+		function previewImage(element, evt){
+			if (evt.target.files && evt.target.files[0]) {
+		        var reader = new FileReader();
+
+		        reader.onload = function (e) {
+		        	element.siblings('.image-preview').css('background-image', 'url('+e.target.result+')');
+		        }
+
+		        reader.readAsDataURL(evt.target.files[0]);
+		    }
 		}
 	})
 

@@ -13,6 +13,11 @@ class PagePresenter extends AbstractPresenter
 		return Markdown::convertToHtml($this->content);
 	}
 
+	public function headlineHtml()
+	{
+		return Markdown::convertToHtml($this->headline);
+	}
+
 	public function uriWildcard()
 	{
 		return $this->uri.'*';

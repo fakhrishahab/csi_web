@@ -8190,4 +8190,18 @@ body {
   padding-left: 20px;
   padding-right: 20px; }
 
+.image-preview {
+  width: 400px;
+  height: 200px;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: #CCC;
+  margin-top: 10px; }
+
+.map-location {
+  margin-top: 20px;
+  width: 100%;
+  height: 300px; }
+
 /*# sourceMappingURL=backend.css.map */

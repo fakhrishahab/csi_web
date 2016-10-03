@@ -28,6 +28,8 @@ Route::resource('backend/content', 'Backend\ContentController', ['except' => ['s
 
 Route::get('backend/dashboard', ['as' => 'backend.dashboard', 'uses' => 'Backend\DashboardController@index']);
 
+Route::resource('backend/info', 'Backend\InfoController');
+
 Route::group(['prefix'=>'gallery'], function(){
 	Route::post('upload', 'Backend\ContentController@upload');
 	Route::get('', 'Backend\ContentController@gallery');

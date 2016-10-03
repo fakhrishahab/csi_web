@@ -34,6 +34,10 @@ elixir(function(mix) {
 		'jquery.js', 'bootstrap.js', 'moment.js', 'summernote.js', 'datepicker.js'
 	], 'public/themes/default/assets/js/admin-app.js')
 
+	mix.scripts([
+		'jquery.js', 'bootstrap.js'
+	], 'public/themes/default/assets/js/frontend.js')
+
 	mix.copy('node_modules/simplemde/dist/simplemde.min.css', elixir.config.publicPath+'/css/simplemde.css');
 	mix.copy('node_modules/simplemde/dist/simplemde.min.js', elixir.config.publicPath+'/js/simplemde.js');
 

@@ -3,7 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>@yield('title') &mdash; CSI Group</title>
 	<link rel="stylesheet" type="text/css" href="{{ theme('css/backend.css') }}">
@@ -21,6 +20,7 @@
 				<li><a href="{{ route('backend.users.index') }}">Users</a></li>
 				<li><a href="{{ route('backend.pages.index') }}">Pages</a></li>
 				<li><a href="{{ route('backend.content.index') }}">Content</a></li>
+				<li><a href="{{ route('backend.info.index') }}">Content</a></li>
 
 				<!-- <li><a href="{{ route('backend.blog.index') }}">Blog Post</a></li> -->
 			</ul>

@@ -18,6 +18,10 @@ class PostPresenter extends AbstractPresenter
 		return $this->body ? Markdown::convertToHtml($this->body) : null;
 	}
 
+	public function headlineHtml(){
+		return $this->headline ? Markdown::convertToHtml($this->headline) : null;
+	}
+
 	public function publishedDate()
 	{
 		if($this->published_at){

@@ -51,8 +51,16 @@ class ContentController extends Controller
             $file = $request->file('image')->getClientOriginalExtension();
             $path = 'public/images/featured/';
             $request->file('image')->move($path, $filename);
+            $attr['image'] = $path.''.$filename;
+        }
 
-            $attr['image'] = $this->path.''.$filename;
+        if($request->hasFile('background')){
+            $filename = $request->file('background')->getClientOriginalName();
+            $file = $request->file('background')->getClientOriginalExtension();
+            $path = 'public/images/background/';
+            $request->file('background')->move($path, $filename);
+
+            $attr['background'] = $path.''.$filename;
         }
 
         $this->content->create($attr);
@@ -71,7 +79,7 @@ class ContentController extends Controller
     public function update(Requests\UpdateContentRequest $request, $id)
     {
         $content = $this->content->findOrFail($id);
-
+        
         $attr = [
             'page_id' => $request->only('page_id')['page_id'],
             'title' => $request->only('title')['title'],
@@ -84,8 +92,15 @@ class ContentController extends Controller
             $file = $request->file('image')->getClientOriginalExtension();
             $path = 'public/images/featured/';
             $request->file('image')->move($path, $filename);
+            $attr['image'] = $path.''.$filename;
+        }
 
-            $attr['image'] = $this->path.''.$filename;
+        if($request->hasFile('background')){
+            $filename = $request->file('background')->getClientOriginalName();
+            $file = $request->file('background')->getClientOriginalExtension();
+            $path = 'public/images/background/';
+            $request->file('background')->move($path, $filename);
+            $attr['background'] = $path.''.$filename;
         }
         // print_r($attr);
         $content->fill($attr)->save();
