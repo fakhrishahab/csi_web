@@ -15,4 +15,9 @@ class Content extends Model
 		$path_parts = explode('/', $path);
 		return $path_parts[4];
     }
+
+    public function page()
+    {
+    	return $this->belongsTo(Pages::class);
+    }
 }

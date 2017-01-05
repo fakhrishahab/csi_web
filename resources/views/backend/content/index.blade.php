@@ -12,6 +12,7 @@
 		<thead>
 			<tr>
 				<th>Title</th>
+				<th>Page</th>
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
@@ -20,6 +21,7 @@
 			@foreach($content as $data)
 				<tr>
 					<td>{{ $data->title }}</td>
+					<td>{{ $data->page->name }}</td>
 					<td>
 						<a href="{{ route('backend.content.edit', $data->id) }}">
 							<span class="glyphicon glyphicon-edit"></span>
@@ -34,5 +36,5 @@
 			@endforeach
 		</tbody>
 	</table>
-
+	{!! $content->render() !!}
 @endsection

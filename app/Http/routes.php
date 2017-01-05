@@ -30,6 +30,19 @@ Route::get('backend/dashboard', ['as' => 'backend.dashboard', 'uses' => 'Backend
 
 Route::resource('backend/info', 'Backend\InfoController');
 
+Route::group(['prefix' => 'contact'], function(){
+	Route::get('', 'ContactController@index');
+	Route::post('create', 'ContactController@create');
+});
+
+Route::get('contact', ['as' => 'contact.index', 'uses' => 'ContactController@index']);
+
+Route::group(['prefix' => 'subscribe'], function(){
+	Route::get('', 'SubscribeController@index');
+	Route::post('create', 'SubscribeController@create');
+});
+Route::get('subscribe', ['as' => 'subscribe.index', 'uses' => 'SubscribeController@index']);
+
 Route::group(['prefix'=>'gallery'], function(){
 	Route::post('upload', 'Backend\ContentController@upload');
 	Route::get('', 'Backend\ContentController@gallery');

@@ -25,7 +25,7 @@ class ContentController extends Controller
 
     public function index()
     {	
-        $content = $this->content->all();
+        $content = $this->content->with('page')->paginate(10);
 
     	return view('backend.content.index', compact('content'));
     }
@@ -47,7 +47,7 @@ class ContentController extends Controller
         ];
 
         if($request->hasFile('image')){
-            $filename = $request->file('image')->getClientOriginalName();
+            $filename = preg_replace('/\s+/', '', $request->file('image')->getClientOriginalName());
             $file = $request->file('image')->getClientOriginalExtension();
             $path = 'public/images/featured/';
             $request->file('image')->move($path, $filename);
@@ -55,7 +55,7 @@ class ContentController extends Controller
         }
 
         if($request->hasFile('background')){
-            $filename = $request->file('background')->getClientOriginalName();
+            $filename = preg_replace('/\s+/', '', $request->file('background')->getClientOriginalName());
             $file = $request->file('background')->getClientOriginalExtension();
             $path = 'public/images/background/';
             $request->file('background')->move($path, $filename);

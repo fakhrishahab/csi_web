@@ -23,11 +23,17 @@ class PasswordController extends Controller
 
     protected function resetPassword($user, $password)
     {
-        $user->forceFill([
-            'password' => $password
-        ])->save();
+        // $user->forceFill([
+        //     'password' => $password
+        // ])->save();
 
         // Auth::guard($this->getGuard())->login($user);
+        // auth()->login($user);
+
+        $user->password = $password;
+
+        $user->save();
+
         auth()->login($user);
     }
 }

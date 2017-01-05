@@ -20,7 +20,9 @@
 				<li><a href="{{ route('backend.users.index') }}">Users</a></li>
 				<li><a href="{{ route('backend.pages.index') }}">Pages</a></li>
 				<li><a href="{{ route('backend.content.index') }}">Content</a></li>
-				<li><a href="{{ route('backend.info.index') }}">Content</a></li>
+				<li><a href="{{ route('backend.info.index') }}">Info</a></li>
+				<li><a href="{{ route('subscribe.index') }}">Subscribe</a></li>
+				<li><a href="{{ route('contact.index') }}">Message</a></li>
 
 				<!-- <li><a href="{{ route('backend.blog.index') }}">Blog Post</a></li> -->
 			</ul>

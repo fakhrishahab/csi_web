@@ -40,7 +40,9 @@ class PagesController extends Controller
     {
 
         if($request->hasFile('image')){
-            $filename = $request->file('image')->getClientOriginalName();
+            echo preg_replace('/\s+/', '', $request->file('image')->getClientOriginalName());
+            // break;
+            $filename = preg_replace('/\s+/', '', $request->file('image')->getClientOriginalName());
             $file = $request->only('uri')['uri'] . '_.'. $request->file('image')->getClientOriginalExtension();
             $path = 'public/images/featured/';
             $request->file('image')->move($path, $filename);
@@ -115,7 +117,7 @@ class PagesController extends Controller
         ];
 
         if($request->hasFile('image')){
-            $filename = $request->file('image')->getClientOriginalName();
+            $filename = preg_replace('/\s+/', '', $request->file('image')->getClientOriginalName());
             $file = $request->only('uri')['uri'] . '_.'. $request->file('image')->getClientOriginalExtension();
             $path = 'public/images/featured/';
             $request->file('image')->move($path, $filename);

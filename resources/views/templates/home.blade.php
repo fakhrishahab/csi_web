@@ -1,4 +1,5 @@
-<section id="home">
+
+ <section id="home">
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators"> 
 			@foreach($home as $key => $home_content)
@@ -34,11 +35,25 @@
 						{!! $home_content->description !!}
 					</div>
 				</div>
+
+				<div class="pattern-corner"></div>
 			</div>
 			@endforeach
 		</div>
+
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		</a>
 	</div>
 </section>
+
+<section class=""><div class="row divider"></div></section>
 
 <section id="about-us" style="background:url({{ $about_page[0]->image }})" class="about-wrapper">
 	<div class="carousel slide" id="carousel-about"  data-ride="carousel">
@@ -79,9 +94,21 @@
 				
 			@endforeach
 		</div>
+
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-about" role="button" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#carousel-about" role="button" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		</a>
 	</div>
-	
+	<div class="pattern-corner"></div>
 </section>
+
+<section class=""><div class="row divider"></div></section>
 
 <section id="key-people" class="keypeople-wrapper">
 	<div id="carousel-keypeople" class="carousel slide" data-ride="carousel" >
@@ -113,15 +140,28 @@
 						{!! $keypeople_content->description !!}	
 					</div>
 				</div>
+				<div class="pattern-corner"></div>
 			</div>
 		@endforeach
 		</div>
+
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-keypeople" role="button" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#carousel-keypeople" role="button" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		</a>
 	</div>
 </section>
 
+<section class=""><div class="row divider"></div></section>
+
 <section id="service" style="background:url({{ $service_page[0]->image }});"  class="service-wrapper">
 	<div id="carousel-service" class="carousel slide" data-ride="carousel"  style="height:600px">
-		<ol class="carousel-indicators"> 
+		<ol class="carousel-indicators carousel-indicators-service"> 
 			@foreach($service as $key => $service_content)
 
 				@if($key==0)
@@ -154,8 +194,21 @@
 				</div>
 			@endforeach
 		</div>
+		
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-service" role="button" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#carousel-service" role="button" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		</a>
 	</div>
+	<div class="pattern-corner"></div>
 </section>
+
+<section class=""><div class="row divider"></div></section>
 
 <section id="testimoni" class="testimoni-wrapper" style="background-image:url({{ $testimoni_page[0]->image }})">
 	<div id="carousel-testimoni" class="carousel slide" data-ride="carousel">
@@ -191,15 +244,26 @@
 				
 		</div>
 	</div>
+	<div class="pattern-corner"></div>
 </section>
 
+<section class=""><div class="row divider"></div></section>
+
 <section id="our-client" class="client-wrapper" style="background-image:url({{ $client_page[0]->image }})">
-	<div class="client-wrapper__content">
+	<div class="client-wrapper__content owl-carousel owl-theme"  id="owl-demo">
 		@foreach($client as $key => $client_content)
+		<div class="item">
 			<img src="{!! $client_content->image !!}" alt="">
+		</div>
+			
 		@endforeach	
+
+		
 	</div>
+	<div class="pattern-corner"></div>
 </section>
+
+<section class=""><div class="row divider"></div></section>
 
 <section id="contact-us" class="contactus-wrapper">
 	<div class="container">
@@ -229,7 +293,7 @@
 						<!-- <label for="subscribe">Subscribe</label> -->
 						<input class="form-control form-contact" name="subscribe" type="text" placeholder="Email" id="email-subscribe">
 						<span class="input-group-btn">
-					        <button class="btn btn-primary btn-subscribe" type="button">Subscribe</button>
+					        <button type="button" class="btn btn-primary btn-subscribe" type="button" data-loading-text="Saving Your Email...">Subscribe</button>
 					      </span>
 					</div>	
 				</div>
@@ -247,17 +311,17 @@
 					</div>
 
 					<div class="form-group">
-						<button class="btn btn-primary btn-send-message">Send Message</button>
+						<button type="button" class="btn btn-primary btn-send-message"  data-loading-text="Sending Message...">Send Message</button>
 					</div>
 				</div>
 			</div>
 		</div>	
 	</div>
-	
+	<div class="pattern-corner"></div>
 </section>
 
-
-<!-- <div class="row">
+{{-- 
+<div class="row">
 	@foreach($posts as $post)
 		
 		<div class="col-md-4">
@@ -274,13 +338,14 @@
 		</div>
 
 	@endforeach
-</div> -->
+</div>
 
 <!-- <div class="row" style="background:#CCC;height:2000px"></div>
 
 <div class="row" id="about">
 	ini about
 </div>
- -->
+ --> --}}
 
 
+ 

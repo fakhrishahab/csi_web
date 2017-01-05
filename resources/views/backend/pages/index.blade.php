@@ -44,9 +44,16 @@
 							</a>
 						</td>
 						<td>
-							<a href="{{ route('backend.pages.confirm', $page->id) }}">
-								<span class="glyphicon glyphicon-remove"></span>
-							</a>
+							@if($page->id <= 15)
+
+							@else
+
+								<a href="{{ route('backend.pages.confirm', $page->id) }}">
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+
+							@endif
+							
 						</td>
 					</tr>
 

@@ -137,7 +137,7 @@
 		{!! Form::label('image', 'Featured Image') !!}
 		{!! Form::file('image', null, ['class'=>'form-control']) !!}
 
-		<div class="image-preview" style="background-image:url('{!! $app['config']['app.url'] !!}/{!! $content->image !!}')"></div>
+		<div class="image-preview" style="background-image:url('{!! $app['config']['app.url'] !!}/csi/{!! $content->image !!}')"></div>
 	</div>
 
 	<div class="form-group">
@@ -159,6 +159,8 @@
 		var description = $('#description');
 		var offset = 0, limit = 2;
 
+		var SITE_PATH = document.location.origin+'/csi/';
+		console.log(SITE_PATH)
 		var option = {
 			height : 300,
 			toolbar: [
@@ -202,7 +204,7 @@
 
 				$.ajax({
 					type : 'post',
-					url : 'http://localhost/csi/gallery/upload',
+					url : SITE_PATH+'gallery/upload',
 					data : formData,
 					contentType : false,
 					processData : false,
@@ -224,7 +226,7 @@
 
 			$.ajax({
 				type : 'get',
-				url : 'http://localhost/csi/gallery?offset='+offset+'&limit='+limit,
+				url : SITE_PATH+'gallery?offset='+offset+'&limit='+limit,
 				success : function(resp){
 				elm.galleryWrapper.empty();
 					resp.result.map(function(key){

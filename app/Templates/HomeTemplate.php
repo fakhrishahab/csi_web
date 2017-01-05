@@ -39,7 +39,7 @@ class HomeTemplate extends AbstractTemplate
 		$about = $this->contents->where('page_id', 9)->get();
 
 		$service = $this->contents->where('page_id', 11)->get();
-		$service_page = $this->pages->where('id',11)->get();
+		$service_page = $this->pages->where('id',11)->orderBy('updated_at', 'DESC')->get();
 
 		$keypeople = $this->contents->where('page_id', 10)->get();
 
@@ -47,7 +47,7 @@ class HomeTemplate extends AbstractTemplate
 		$testimoni = $this->contents->where('page_id', 12)->get();
 
 		$client_page = $this->pages->where('id', 13)->get();
-		$client = $this->contents->where('page_id', 13)->get();
+		$client = $this->contents->where('page_id', 13)->orderBy('updated_at', 'DESC')->get();
 
 		$info = $this->infos->all();
 		// $data = array(

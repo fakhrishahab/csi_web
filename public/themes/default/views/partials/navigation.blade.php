@@ -1,7 +1,7 @@
 @foreach($pages as $page)
 
 	<li class="{{ Request::is($page->uri_wildcard) ? 'active' : '' }} {{ count($page->children) ? ($page->isChild()  ? 'dropdown-submenu' : 'dropdown') : ''  }}">
-		<a href="{{ url($page->uri) }}">
+		<a href="{{ $page->uri }}">
 			{{ $page->title }}
 
 			@if(count($page->children))
